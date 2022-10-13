@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 03:56:42 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 07:58:51 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 08:15:35 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void
 
 	d = (char *)dest;
 	s = (char *)src;
-	if (s == NULL && d == NULL)
+	if (!s && !d)
 		return (0);
 	i = -1;
 	while (++i < n)
