@@ -6,13 +6,13 @@
 #    By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 01:23:39 by dcharala          #+#    #+#              #
-#    Updated: 2022/10/13 01:51:46 by dcharala         ###   ########.fr        #
+#    Updated: 2022/10/13 02:28:23 by dcharala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-SRCS	=	ft_isalpha.c
+SRCS	=	ft_isalpha.c	ft_isdigit.c \
 
 HEAD	=	libft.h
 
@@ -26,16 +26,11 @@ CFLAGS	=	-Wall -Wextra -Werror
 all		:	$(NAME)
 
 %.o		:	%.c $(HEAD)
-			@echo ""
-			@echo "[COMPILATION STARTED]"
-			@echo ""
 			$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) :	$(OBJS) $(HEAD)
 			ar r $(NAME) $?
-			@echo ""
-			@echo "[COMPILATION COMPLETED]"
-			@echo ""
+			@echo "make: *** [libft] Success"
 
 clean	:	
 			@rm -rf $(OBJS)
