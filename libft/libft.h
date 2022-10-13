@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 04:01:58 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 04:36:30 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ size_t	ft_strlen(const char *str);
 void	*ft_memset(void *buf, int chr, size_t len);
 void	ft_bzero(void *ptr, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memmove(void *dst, const void *src, size_t n);
+size_t	ft_strlcpy(char *dst, const char *src, size_t siz);
 
 #endif
