@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 03:32:25 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 03:39:25 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 05:52:21 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void
 	size_t	i;
 	char	*str;
 
-	i = 0;
 	str = (char *)ptr;
-	while (i < n)
-		str[i++] = 0;
+	i = -1;
+	while (++i < n)
+		str[i] = 0;
 }
