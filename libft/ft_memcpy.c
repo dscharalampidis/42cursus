@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 04:01:58 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/13 03:56:42 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/13 04:10:02 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stddef.h>
+#include "libft.h"
 
-int		ft_isalpha(int chr);
-int		ft_isdigit(int chr);
-int		ft_isalnum(int chr);
-int		ft_isascii(int chr);
-int		ft_isprint(int chr);
-size_t	ft_strlen(const char *str);
-void	*ft_memset(void *buf, int chr, size_t len);
-void	ft_bzero(void *ptr, size_t n);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+void
+	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	i;
+	char	*d;
+	char	*s;
 
-#endif
+	d = (char *)dst;
+	s = (char *)src;
+	if (s == NULL && d == NULL)
+		return (0);
+	i = -1;
+	while (++i < n)
+		d[i] = s[i];
+	return (dst);
+}
+
