@@ -6,17 +6,17 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 05:18:51 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 05:22:01 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 08:13:31 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int
-	ft_toupper(int chr)
+	ft_toupper(int c)
 {
-	if (chr >= 97 && chr <= 122)
-		return (chr - 32);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
 	else
-		return (chr);
+		return (c);
 }
