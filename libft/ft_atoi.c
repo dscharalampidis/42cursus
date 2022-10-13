@@ -6,37 +6,35 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 06:28:41 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 06:53:20 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 07:46:42 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long
-	ft_atoi(const char *str)
+int
+	ft_atoi(const char *nptr)
 {
-	unsigned long long	nbr;
-	int					sgn;
-	int					i;
+	long int	nbr;
+	int				sgn;
 
 	nbr = 0;
 	sgn = 1;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 20)
-		i++;
-	if (str[i] == 45)
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 20)
+		nptr++;
+	if (*nptr == 45)
 		sgn = -1;
-	if (str[i] == 43 || str[i] == 45)
-		i++;
-	while (ft_isdigit(str[i]))
+	if (*nptr == 43 || *nptr == 45)
+		nptr++;
+	while (ft_isdigit(*nptr))
 	{
-		nbr = nbr * 10 + str[i] - 48;
-		i++;
+		nbr = nbr * 10 + *nptr - 48;
+		nptr++;
 	}
-	if (sgn == 1 && nbr >= 9223372036854775807u)
+	if (nbr * sgn > INT_MAX)
 		return (-1);
-	if (sgn == -1 && nbr >= 9223372036854775808u)
+	if (nbr * sgn < INT_MIN)
 		return (0);
-	return (nbr * sgn);
+	return ((int)nbr * sgn);
 }
 
