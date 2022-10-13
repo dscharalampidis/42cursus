@@ -6,19 +6,19 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 03:09:02 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 06:13:26 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 08:07:11 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 size_t
-	ft_strlen(const char *str)
+	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = -1;
-	while (str[++i] != 0)
+	while (s[++i] != 0)
 		;
 	return (i);
 }
