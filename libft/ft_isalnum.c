@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 02:36:34 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 02:39:48 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 05:54:42 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int
 	ft_isalnum(int chr)
 {
-	if ((chr >= 97 && chr <= 122)
+	if ((chr >= 48 && chr <= 57)
 		|| (chr >= 65 && chr <= 90)
-		|| (chr >= 48 && chr <= 57))
+		|| (chr >= 97 && chr <= 122))
 		return (chr);
 	else
 		return (0);
