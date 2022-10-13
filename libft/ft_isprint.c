@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 03:05:17 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/13 03:03:37 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/13 03:04:38 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
 int
-	ft_isalpha(int chr);
-int
-	ft_isdigit(int chr);
-int
-	ft_isalnum(int chr);
-int
-	ft_isascii(int chr);
-int
-	ft_isprint(int chr);
-
-#endif
+	ft_isprint(int chr)
+{
+	if (chr >= 32 && chr <= 126)
+		return (chr);
+	else
+		return (0);
+}
