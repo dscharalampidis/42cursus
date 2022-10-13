@@ -6,17 +6,17 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 02:14:13 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 02:17:01 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 07:57:01 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int
-	ft_isdigit(int chr)
+	ft_isdigit(int c)
 {
-	if (chr >= 48 && chr <= 57)
-		return (chr);
+	if (c >= 48 && c <= 57)
+		return (c);
 	else
 		return (0);
 }
