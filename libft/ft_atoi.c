@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 06:28:41 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 07:46:42 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 08:21:26 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int
 	ft_atoi(const char *nptr)
 {
 	long int	nbr;
-	int				sgn;
+	int			sgn;
 
 	nbr = 0;
 	sgn = 1;
@@ -37,4 +37,3 @@ int
 		return (0);
 	return ((int)nbr * sgn);
 }
-

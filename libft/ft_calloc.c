@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 07:03:49 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 07:27:26 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 08:21:04 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void
 	buf = (void *)malloc(nmemb * size);
 	if (!buf)
 		return (NULL);
-	ft_memset(buf,  0, nmemb * size);
+	ft_memset(buf, 0, nmemb * size);
 	return (buf);
 }
