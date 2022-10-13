@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 03:19:48 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 03:21:43 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 03:40:19 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void
 	i = 0;
 	str = (char *)buf;
 	while (i < len)
-	{
-		str[i] = chr;
-		i++;
-	}
+		str[i++] = chr;
 	return (str);
 }
