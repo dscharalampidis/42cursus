@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 00:57:19 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 01:00:08 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 05:56:33 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int
 	ft_isalpha(int chr)
 {
-	if ((chr >= 97 && chr <= 122) || (chr >= 65 && chr <= 90))
+	if ((chr >= 65 && chr <= 90) || (chr >= 97 && chr <= 122))
 		return (chr);
 	else
 		return (0);
