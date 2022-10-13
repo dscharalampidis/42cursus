@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 02:30:44 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/13 02:14:13 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/13 02:17:01 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
 int
-	ft_isalpha(int chr);
-int
-	ft_isdigit(int chr);
-
-#endif
+	ft_isdigit(int chr)
+{
+	if (chr >= 48 && chr <= 57)
+		return (chr);
+	else
+		return (0);
+}
