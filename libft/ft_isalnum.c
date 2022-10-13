@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 02:40:24 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/13 02:36:34 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/13 02:39:48 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
 int
-	ft_isalpha(int chr);
-int
-	ft_isdigit(int chr);
-int
-	ft_isalnum(int chr);
-
-#endif
+	ft_isalnum(int chr)
+{
+	if ((chr >= 97 && chr <= 122)
+		|| (chr >= 65 && chr <= 90)
+		|| (chr >= 48 && chr <= 57))
+		return (chr);
+	else
+		return (0);
+}

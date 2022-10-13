@@ -6,13 +6,13 @@
 #    By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 01:23:39 by dcharala          #+#    #+#              #
-#    Updated: 2022/10/13 02:28:23 by dcharala         ###   ########.fr        #
+#    Updated: 2022/10/13 02:40:42 by dcharala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-SRCS	=	ft_isalpha.c	ft_isdigit.c \
+SRCS	=	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c \
 
 HEAD	=	libft.h
 
