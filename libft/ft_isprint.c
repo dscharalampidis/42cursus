@@ -6,17 +6,17 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 03:03:37 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 03:04:38 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 07:57:48 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int
-	ft_isprint(int chr)
+	ft_isprint(int c)
 {
-	if (chr >= 32 && chr <= 126)
-		return (chr);
+	if (c >= 32 && c <= 126)
+		return (c);
 	else
 		return (0);
 }
