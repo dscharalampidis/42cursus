@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 03:09:02 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 03:15:55 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 03:46:58 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ size_t
 	size_t	i;
 
 	i = 0;
-	while (*str != 0)
-	{
-		str++;
+	while (str[i] != 0)
 		i++;
-	}
 	return (i);
 }
