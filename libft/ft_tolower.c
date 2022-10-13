@@ -6,17 +6,17 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 05:24:31 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 05:26:05 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 08:13:02 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int
-	ft_tolower(int chr)
+	ft_tolower(int c)
 {
-	if (chr >= 65 && chr <= 90)
-		return (chr + 32);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
 	else
-		return (chr);
+		return (c);
 }
