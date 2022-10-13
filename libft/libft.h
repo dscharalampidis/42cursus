@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 05:37:33 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/13 05:46:06 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		ft_toupper(int chr);
 int		ft_tolower(int chr);
 char	*ft_strchr(const char *ptr, int chr);
 char	*ft_strrchr(const char *ptr, int chr);
+int		ft_strncmp(const char *str1, const char *str2, size_t n);
 
 #endif
