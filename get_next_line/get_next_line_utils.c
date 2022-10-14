@@ -6,46 +6,39 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:57:48 by dcharala          #+#    #+#             */
-/*   Updated: 2022/09/06 02:26:57 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:10:55 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/* Find the length of a string. This is a helper function used by many other
- * functions. */
 size_t
-	ft_strlen(const char *str)
+	ft_strlen(const char *s)
 {
-	size_t	len;
+	size_t	i;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	i = -1;
+	while (s[++i])
+		;
+	return (i);
 }
 
-/* Dublicate a string. This function is used to add an empty string in
- * `joinedbuf` and `line` when they don't exist yet. */
 char
-	*ft_strdup(const char *str)
+	*ft_strdup(const char *s)
 {
-	char	*dup;
+	char	*buf;
 	size_t	len;
 	size_t	i;
 
-	len = ft_strlen(str);
-	dup = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dup)
+	len = ft_strlen((char *)s);
+	buf = (char *)malloc(sizeof(char) * (len + 1));
+	if (!buf)
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	i = -1;
+	while (++i < len)
+		buf[i] = s[i];
+	buf[i] = 0;
+	return (buf);
 }
 
 /* Copy a character from one place in memory to another. This is a helper
