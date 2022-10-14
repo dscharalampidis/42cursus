@@ -6,14 +6,14 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 12:19:23 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 12:41:24 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/15 01:32:11 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int
-	cnt_digits(int n)
+	lft_cnt_digits(int n)
 {
 	int		len;
 	long	i;
@@ -36,7 +36,7 @@ static int
 }
 
 void
-	write_str(long n, int len, char *str)
+	lft_write_str(long n, int len, char *str)
 {
 	str[len] = 0;
 	while (len)
@@ -54,16 +54,16 @@ char
 	int		len;
 	long	i;
 
-	len = cnt_digits(n);
+	len = lft_cnt_digits(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	if (n >= 0)
-		write_str(n, len, str);
+		lft_write_str(n, len, str);
 	else
 	{
 		i = (long)n * -1;
-		write_str(i, len, str);
+		lft_write_str(i, len, str);
 		str[0] = 45;
 	}
 	return (str);

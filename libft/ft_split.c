@@ -6,14 +6,14 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 01:59:20 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 02:26:25 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/15 01:38:08 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int
-	cnt_words(char *str, char delim)
+	lft_cnt_words(char *str, char delim)
 {
 	int	i;
 	int	j;
@@ -31,7 +31,7 @@ static int
 }
 
 static int
-	find_word_len(char *word, char delim)
+	lft_get_word_len(char *word, char delim)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ static int
 }
 
 static void
-	*free_buf(char *buf[])
+	*lft_free(char *buf[])
 {
 	int	i;
 
@@ -54,7 +54,7 @@ static void
 }
 
 static char
-	**split_words(const char *s, char c, char **buf)
+	**lft_split_words(const char *s, char c, char **buf)
 {
 	int	i;
 	int	j;
@@ -66,10 +66,10 @@ static char
 	{
 		if (s[i] != c)
 		{
-			k = find_word_len((char *)(s + i), c);
+			k = lft_get_word_len((char *)(s + i), c);
 			buf[j] = ft_substr(&s[i], 0, k);
 			if (!buf[j])
-				return (free_buf(buf));
+				return (lft_free(buf));
 			i += (k -1);
 			j++;
 		}
@@ -86,8 +86,8 @@ char
 
 	if (!s)
 		return (NULL);
-	buf = (char **)malloc(sizeof(char *) * (cnt_words((char *)s, c) + 1));
+	buf = (char **)malloc(sizeof(char *) * (lft_cnt_words((char *)s, c) + 1));
 	if (!buf)
 		return (NULL);
-	return (split_words(s, c, buf));
+	return (lft_split_words(s, c, buf));
 }
