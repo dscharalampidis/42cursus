@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:57:48 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 20:10:55 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:30:15 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,23 @@ char
 	return (buf);
 }
 
-/* Copy a character from one place in memory to another. This is a helper
- * function used by many other functions. */
 void
-	*ft_memcpy(void *dst, const void *src, size_t n)
+	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char		*d;
-	const char	*s;
+	size_t	i;
+	char	*d;
+	char	*s;
 
-	if (!dst && !src)
+	if (!dest && !src)
 		return (NULL);
-	d = (char *)dst;
-	s = (const char *)src;
-	while (n)
-	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
-	}
-	return (dst);
+	d = (char *)dest;
+	s = (char *)src;
+	i = -1;
+	while (++i < n)
+		d[i] = s[i];
+	return (dest);
 }
 
-/* Merge two strings into a new one. This function is used to append each `buf`
- * from `read()` to the previous one. */
 char
 	*ft_strjoin(const char *str1, const char *str2)
 {
