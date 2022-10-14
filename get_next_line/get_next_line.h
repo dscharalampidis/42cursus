@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:32:35 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 21:53:58 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 23:18:19 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 
 /* get_next_line.c */
 char	*ft_strchr(const char *s, int c);
-char	*append_buf(int fd, char *buf, char *joinedbuf);
-char	*separate_line_from_joinedbuf(char *line);
+char	*gnl_append_buf(int fd, char *buf, char *joinedbuf);
+char	*gnl_separate_line_from_joinedbuf(char *line);
 char	*get_next_line(int fd);
 
 /* get_next_utils.c */

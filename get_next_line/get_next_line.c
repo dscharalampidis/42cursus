@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:53:06 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 19:42:03 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 23:17:53 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char
 }
 
 char
-	*append_buf(int fd, char *buf, char *joinedbuf)
+	*gnl_append_buf(int fd, char *buf, char *joinedbuf)
 {
 	char	*tmp;
 	int		size;
@@ -50,7 +50,7 @@ char
 }
 
 char
-	*separate_line_from_joinedbuf(char *line)
+	*gnl_separate_line_from_joinedbuf(char *line)
 {
 	size_t	i;
 	char	*joinedbuf;
@@ -82,11 +82,11 @@ char
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	line = append_buf(fd, buf, joinedbuf);
+	line = gnl_append_buf(fd, buf, joinedbuf);
 	free(buf);
 	buf = NULL;
 	if (!line)
 		return (NULL);
-	joinedbuf = separate_line_from_joinedbuf(line);
+	joinedbuf = gnl_separate_line_from_joinedbuf(line);
 	return (line);
 }
