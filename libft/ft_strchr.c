@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 05:27:41 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 08:02:17 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 19:34:29 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,9 @@
 char
 	*ft_strchr(const char *s, int c)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str != (unsigned char)c)
-	{
-		if (*str == 0)
-			return (NULL);
-		str++;
-	}
-	return (str);
+	while (*s != (unsigned char)c && *s)
+		s++;
+	if (*s == (unsigned char)c)
+		return ((char *)s);
+	return (NULL);
 }
