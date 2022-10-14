@@ -1,4 +1,4 @@
-# Get Next Line (v. 10)
+# get_next_line [version 10]
 Reading a line from a fd is way too tedious
 
 ## Summary
