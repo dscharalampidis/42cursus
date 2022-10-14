@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:57:48 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 20:30:15 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:34:14 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,23 @@ void
 }
 
 char
-	*ft_strjoin(const char *str1, const char *str2)
+	*ft_strjoin(const char *s1, const char *s2)
 {
 	size_t	len1;
 	size_t	len2;
-	char	*joined;
+	char	*buf;
 
-	if (str1 == NULL || str2 == NULL)
+	if (!s1 || !s2)
 		return (NULL);
-	len1 = ft_strlen(str1);
-	len2 = ft_strlen(str2);
-	joined = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!joined)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	buf = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!buf)
 		return (NULL);
-	ft_memcpy(joined, str1, len1);
-	ft_memcpy(joined + len1, str2, len2);
-	joined[len1 + len2] = '\0';
-	return (joined);
+	ft_memcpy(buf, s1, len1);
+	ft_memcpy(buf + len1, s2, len2);
+	buf[len1 + len2] = 0;
+	return (buf);
 }
 
 /* Extract a substring from a string. This function is used to get the remainder
