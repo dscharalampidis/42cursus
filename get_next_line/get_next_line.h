@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:32:35 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 20:50:50 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 21:53:58 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@
 #  define BUFFER_SIZE 0
 # endif
 
+/* get_next_line.c */
 char	*ft_strchr(const char *s, int c);
+char	*append_buf(int fd, char *buf, char *joinedbuf);
+char	*separate_line_from_joinedbuf(char *line);
+char	*get_next_line(int fd);
+
+/* get_next_utils.c */
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*append_buf(int fd, char *buf, char *joinedbuf);
-char	*separate_line_from_joinedbuf(char *line);
-char	*get_next_line(int fd);
 
 #endif
