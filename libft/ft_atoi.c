@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 06:28:41 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/13 08:21:26 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 13:48:55 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int
 		nbr = nbr * 10 + *nptr - 48;
 		nptr++;
 	}
-	if (nbr * sgn > INT_MAX)
+	if (nbr * sgn > 2147483647)
 		return (-1);
-	if (nbr * sgn < INT_MIN)
+	if (nbr * sgn < -2147483648)
 		return (0);
 	return ((int)nbr * sgn);
 }
