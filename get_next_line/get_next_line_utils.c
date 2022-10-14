@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:57:48 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 20:34:14 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:45:21 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,25 @@ char
 	return (buf);
 }
 
-/* Extract a substring from a string. This function is used to get the remainder
- * of `joinedbuf` after removing a line from it. */
 char
-	*ft_substr(char const *str, unsigned int start, size_t n)
+	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t		len;
-	char		*sub;
+	size_t		len_s;
+	char		*buf;
 	const char	*ptr;
 
-	len = ft_strlen(str);
-	if (len < start)
-		start = len;
-	str += start;
-	ptr = str;
-	while (*ptr && n)
-	{
+	len_s = ft_strlen(s);
+	if (len_s < start)
+		start = len_s;
+	s += start;
+	ptr = s;
+	while (*ptr && len--)
 		ptr++;
-		n--;
-	}
-	n = ptr - str;
-	sub = (char *)malloc(sizeof(char) * (n + 1));
-	if (!sub)
+	len = ptr - s;
+	buf = (char *)malloc(sizeof(char) * (len + 1));
+	if (!buf)
 		return (NULL);
-	ft_memcpy(sub, str, n);
-	sub[n] = '\0';
-	return (sub);
+	ft_memcpy(buf, s, len);
+	buf[len] = 0;
+	return (buf);
 }
