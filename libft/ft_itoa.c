@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 12:19:23 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 12:31:00 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 12:41:24 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int
 	}
 	if (n > 0)
 		return (len);
-	else if (n == 0)
+	else if (!n)
 		return (1);
 	else
 		return (len + 1);
@@ -39,7 +39,7 @@ void
 	write_str(long n, int len, char *str)
 {
 	str[len] = 0;
-	while (len != 0)
+	while (len)
 	{
 		str[len - 1] = (n % 10) + 48;
 		n = n / 10;
