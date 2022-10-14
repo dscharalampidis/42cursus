@@ -1,2 +1,6 @@
-# libft
-Functions included in the `libft` project, version 15.
+# libft [version 15]
+Your very first own library
+
+## Summary
+This project is about coding a C library.
+It will contain a lot of general purpose functions your programs will rely upon.
