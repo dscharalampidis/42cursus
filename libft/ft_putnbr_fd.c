@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 13:11:40 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 13:46:06 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/14 19:34:53 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void
 			ft_putchar_fd(n + 48, fd);
 	ft_putchar_fd(r + 48, fd);
 }
-
 
 void
 	ft_putnbr_fd(int n, int fd)
