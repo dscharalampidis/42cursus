@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 13:11:40 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 01:35:04 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/13 06:28:41 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/14 13:48:55 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void
-	lft_parse_nbr(int n, int fd)
+int
+	ft_atoi(const char *nptr)
 {
-	int	r;
+	long int	nbr;
+	int			sgn;
 
-	r = n % 10;
-	n = n / 10;
-	if (n >= 10)
-		lft_parse_nbr(n, fd);
-	else
-		if (n)
-			ft_putchar_fd(n + 48, fd);
-	ft_putchar_fd(r + 48, fd);
-}
-
-void
-	ft_putnbr_fd(int n, int fd)
-{
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else if (n > 0)
-		lft_parse_nbr(n, fd);
-	else if (n < 0)
+	nbr = 0;
+	sgn = 1;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 20)
+		nptr++;
+	if (*nptr == 45)
+		sgn = -1;
+	if (*nptr == 43 || *nptr == 45)
+		nptr++;
+	while (ft_isdigit(*nptr))
 	{
-		ft_putchar_fd(45, fd);
-		n *= -1;
-		lft_parse_nbr(n, fd);
+		nbr = nbr * 10 + *nptr - 48;
+		nptr++;
 	}
-	else
-		ft_putchar_fd(48, fd);
+	if (nbr * sgn > 2147483647)
+		return (-1);
+	if (nbr * sgn < -2147483648)
+		return (0);
+	return ((int)nbr * sgn);
 }

@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 13:11:40 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 01:35:04 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/14 12:33:16 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/14 12:38:59 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void
-	lft_parse_nbr(int n, int fd)
+char
+	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	int	r;
+	unsigned int	i;
+	char			*str;
 
-	r = n % 10;
-	n = n / 10;
-	if (n >= 10)
-		lft_parse_nbr(n, fd);
-	else
-		if (n)
-			ft_putchar_fd(n + 48, fd);
-	ft_putchar_fd(r + 48, fd);
-}
-
-void
-	ft_putnbr_fd(int n, int fd)
-{
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else if (n > 0)
-		lft_parse_nbr(n, fd);
-	else if (n < 0)
-	{
-		ft_putchar_fd(45, fd);
-		n *= -1;
-		lft_parse_nbr(n, fd);
-	}
-	else
-		ft_putchar_fd(48, fd);
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str)
+		return (NULL);
+	i = -1;
+	while (s[++i])
+		str[i] = f(i, s[i]);
+	str[i] = 0;
+	return (str);
 }

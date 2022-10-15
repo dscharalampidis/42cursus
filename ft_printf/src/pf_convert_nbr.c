@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   pf_convert_nbr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 12:19:23 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 01:32:11 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/15 01:14:54 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/15 05:14:44 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int
-	lft_cnt_digits(int n)
+void
+	pf_putnbr(long int n)
+{
+	char	tmp;
+
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = n * -1;
+	}
+	if (n >= 10)
+		pf_putnbr(n / 10);
+	tmp = n % 10 + 48;
+	write(1, &tmp, 1);
+}
+
+int
+	pf_get_nbr_len(long int n)
 {
 	int		len;
 	long	i;
@@ -35,36 +51,15 @@ static int
 		return (len + 1);
 }
 
-void
-	lft_write_str(long n, int len, char *str)
+int
+	pf_convert_nbr(va_list ap, char specifier)
 {
-	str[len] = 0;
-	while (len)
-	{
-		str[len - 1] = (n % 10) + 48;
-		n = n / 10;
-		len --;
-	}
-}
+	long int	n;
 
-char
-	*ft_itoa(int n)
-{
-	char	*str;
-	int		len;
-	long	i;
-
-	len = lft_cnt_digits(n);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	if (n >= 0)
-		lft_write_str(n, len, str);
+	if (specifier == 'u')
+		n = (unsigned int)va_arg(ap, int);
 	else
-	{
-		i = (long)n * -1;
-		lft_write_str(i, len, str);
-		str[0] = 45;
-	}
-	return (str);
+		n = va_arg(ap, int);
+	pf_putnbr(n);
+	return (pf_get_nbr_len(n));
 }

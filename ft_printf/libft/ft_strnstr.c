@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 13:11:40 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 01:35:04 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/13 06:15:22 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/13 08:21:44 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void
-	lft_parse_nbr(int n, int fd)
+char
+	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	r;
+	size_t	i;
+	size_t	j;
 
-	r = n % 10;
-	n = n / 10;
-	if (n >= 10)
-		lft_parse_nbr(n, fd);
-	else
-		if (n)
-			ft_putchar_fd(n + 48, fd);
-	ft_putchar_fd(r + 48, fd);
-}
-
-void
-	ft_putnbr_fd(int n, int fd)
-{
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else if (n > 0)
-		lft_parse_nbr(n, fd);
-	else if (n < 0)
+	if (!*little)
+		return ((char *)big);
+	i = -1;
+	while (++i < len && big[i])
 	{
-		ft_putchar_fd(45, fd);
-		n *= -1;
-		lft_parse_nbr(n, fd);
+		j = -1;
+		while (i + ++j < len && little[j] && big[i + j] == little[j])
+			if (little[j + 1] == 0)
+				return ((char *)&big[i]);
 	}
-	else
-		ft_putchar_fd(48, fd);
+	return (NULL);
 }
