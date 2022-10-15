@@ -6,21 +6,11 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:53:06 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 23:17:53 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/15 19:16:20 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char
-	*ft_strchr(const char *s, int c)
-{
-	while (*s != (unsigned char)c && *s)
-		s++;
-	if (*s == (unsigned char)c)
-		return ((char *)s);
-	return (NULL);
-}
+#include "libft.h"
 
 char
 	*gnl_append_buf(int fd, char *buf, char *joinedbuf)

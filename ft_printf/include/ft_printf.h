@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:47:14 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 06:18:05 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/15 19:49:25 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include "../libft/include/libft.h"
 
 # ifdef __linux__
 #  ifndef OS_FLAG
