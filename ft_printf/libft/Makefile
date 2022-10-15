@@ -6,45 +6,66 @@
 #    By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 01:23:39 by dcharala          #+#    #+#              #
-#    Updated: 2022/10/15 05:40:45 by dcharala         ###   ########.fr        #
+#    Updated: 2022/10/15 19:07:25 by dcharala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libft.a
+# tool macros
+CXX := gcc
+CXXFLAGS := -Wall -Wextra -Werror
 
-SRCS	=	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c \
-			ft_isprint.c	ft_strlen.c		ft_memset.c		ft_bzero.c \
-			ft_memcpy.c 	ft_memmove.c	ft_strlcpy.c	ft_strlcat.c \
-			ft_toupper.c	ft_tolower.c	ft_strchr.c		ft_strrchr.c \
-			ft_strncmp.c	ft_strnstr.c	ft_atoi.c		ft_calloc.c \
-			ft_strdup.c		ft_substr.c		ft_strjoin.c	ft_strtrim.c \
-			ft_split.c 		ft_itoa.c		ft_strmapi.c	ft_striteri.c \
-			ft_putchar_fd.c ft_putstr_fd.c	ft_putendl_fd.c	ft_putnbr_fd.c \
-			get_next_line.c \
+# path macros
+OBJ_PATH := obj
+SRC_PATH := .
 
-HEAD	=	libft.h
+# compile macros
+TARGET := libft.a
 
-OBJS	=	$(SRCS:%.c=%.o)
+# src files & obj files
+SRC := $(foreach x, $(SRC_PATH), $(wildcard $(addprefix $(x)/*,.c*)))
+OBJ := $(addprefix $(OBJ_PATH)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+# clean files list
+DISTCLEAN_LIST := $(OBJ) \
+CLEAN_LIST := $(TARGET) \
+			  $(DISTCLEAN_LIST)
 
-.PHONY	:	all clean fclean re
+# default rule
+default: makedir all
 
-all		:	$(NAME)
+# non-phony targets
+$(TARGET): $(OBJ)
+	@ar rcs $(TARGET) $(OBJ)
+	@echo "make: *** [ft_libft] Success"
 
-%.o		:	%.c $(HEAD)
-			$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c* libft.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(NAME) :	$(OBJS) $(HEAD)
-			ar r $(NAME) $?
-			@echo "make: *** [libft] Success"
+# phony rules
+.PHONY: makedir
+makedir:
+	@mkdir -p $(OBJ_PATH)
 
-clean	:	
-			@rm -rf $(OBJS)
-			@echo "make: *** [libft] Success"
+.PHONY: all
+all: $(TARGET)
 
-fclean	:	clean
-			@rm -f $(NAME)
+.PHONY: clean
+clean:
+	@echo "make: *** [ft_libft] Cleaned" $(CLEAN_LIST)
+	@rm -f $(CLEAN_LIST)
+	@rm -rf $(OBJ_PATH)
 
-re		:	fclean all
+.PHONY: distclean
+distclean:
+	@echo "make: *** [ft_libft] Cleaned" $(CLEAN_LIST)
+	@rm -f $(DISTCLEAN_LIST)
+	@rm -rf $(OBJ_PATH)
+
+.PHONY: fclean
+fclean:
+	@echo "make: *** [ft_libft] Cleaned" $(CLEAN_LIST)
+	@rm -f $(DISTCLEAN_LIST)
+	@rm -rf $(OBJ_PATH)
+
+.PHONY: re
+re: fclean makedir all
