@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:47:14 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 19:49:25 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/15 22:07:00 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # ifdef __linux__
 #  ifndef OS_FLAG
 #   define OS_FLAG 'L'
+#  endif
+# elif __APPLE__
+#  ifndef OS_FLAG
+#   define OS_FLAG 'A'
 #  endif
 # endif
 

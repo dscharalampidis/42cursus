@@ -6,7 +6,7 @@
 #    By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 01:23:39 by dcharala          #+#    #+#              #
-#    Updated: 2022/10/15 19:07:25 by dcharala         ###   ########.fr        #
+#    Updated: 2022/10/15 22:13:59 by dcharala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ default: makedir all
 # non-phony targets
 $(TARGET): $(OBJ)
 	@ar rcs $(TARGET) $(OBJ)
-	@echo "make: *** [ft_libft] Success"
+	@echo "make: *** [libft] Success"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c* libft.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -51,19 +51,19 @@ all: $(TARGET)
 
 .PHONY: clean
 clean:
-	@echo "make: *** [ft_libft] Cleaned" $(CLEAN_LIST)
+	@echo "make: *** [libft] Cleaned" $(CLEAN_LIST)
 	@rm -f $(CLEAN_LIST)
 	@rm -rf $(OBJ_PATH)
 
 .PHONY: distclean
 distclean:
-	@echo "make: *** [ft_libft] Cleaned" $(CLEAN_LIST)
+	@echo "make: *** [libft] Cleaned" $(CLEAN_LIST)
 	@rm -f $(DISTCLEAN_LIST)
 	@rm -rf $(OBJ_PATH)
 
 .PHONY: fclean
 fclean:
-	@echo "make: *** [ft_libft] Cleaned" $(CLEAN_LIST)
+	@echo "make: *** [libft] Cleaned" $(CLEAN_LIST)
 	@rm -f $(DISTCLEAN_LIST)
 	@rm -rf $(OBJ_PATH)
 

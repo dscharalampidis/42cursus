@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 19:36:46 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/15 22:12:46 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 #  include <limits.h>
 #  include <stdint.h>
 #  include <stdarg.h>
+#  ifndef OS_FLAG
+#   define OS_FLAG 'A'
+#  endif
 # endif
 
 # ifndef BUFFER_SIZE
