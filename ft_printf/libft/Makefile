@@ -6,7 +6,7 @@
 #    By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 01:23:39 by dcharala          #+#    #+#              #
-#    Updated: 2022/10/15 19:07:25 by dcharala         ###   ########.fr        #
+#    Updated: 2022/10/15 19:42:46 by dcharala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CXXFLAGS := -Wall -Wextra -Werror
 
 # path macros
 OBJ_PATH := obj
-SRC_PATH := .
+SRC_PATH := src
+INC_PATH := include
 
 # compile macros
 TARGET := libft.a
@@ -38,8 +39,8 @@ $(TARGET): $(OBJ)
 	@ar rcs $(TARGET) $(OBJ)
 	@echo "make: *** [ft_libft] Success"
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c* libft.h
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c*
+	$(CXX) $(CXXFLAGS) -I$(INC_PATH) -c $< -o $@
 
 # phony rules
 .PHONY: makedir
