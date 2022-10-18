@@ -6,12 +6,12 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/18 21:43:52 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 00:29:17 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "../libft/include/libft.h"
 
@@ -25,5 +25,6 @@ void	ps_free(char **arrv, char error);
 /* checker.c */
 void	ps_chk_invalid_arg(char **arrv);
 void	ps_chk_duplicate_arg(char **arrv);
+int		ps_chk_nil(char *arr);
 
 #endif
