@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/17 18:00:25 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:45:09 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include "../libft/include/libft.h"
 
 /* push_swap.c */
+char	*ps_conv_argvtoarr(char **argv, char *delim);
 
 #endif
