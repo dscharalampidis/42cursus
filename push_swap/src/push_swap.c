@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/18 18:43:33 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:51:22 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int
 {
 	char	*arr;
 
+	arr = NULL;
 	if (argc > 1)
 		arr = ps_conv_argvtoarr(argv, "-");
 	ft_printf("%s\n", arr);
