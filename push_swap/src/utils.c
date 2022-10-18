@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/18 21:43:52 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/18 21:37:56 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/18 21:38:48 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "../libft/include/libft.h"
+void
+	ps_error(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(EXIT_FAILURE);
+}
 
-/* push_swap.c */
-char	**ps_conv_argvtoarr(char **argv);
+void
+	ps_free(char **arrv, char error)
+{
+	int	i;
 
-/* utils.c */
-void	ps_error(void);
-void	ps_free(char **arrv, char error);
-
-/* checker.c */
-void	ps_chk_invalid_arg(char **arrv);
-void	ps_chk_duplicate_arg(char **arrv);
-
-#endif
+	i = -1;
+	while (arrv[++i])
+		free(arrv[i]);
+	free(arrv);
+	if (error == 'E')
+		ps_error();
+}
