@@ -6,42 +6,51 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/18 18:51:22 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:56:16 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char *
-	ps_conv_argvtoarr(char **argv, char *delim)
+char**
+	ps_conv_argvtoarrv(char **argv)
 {
 	int		i;
 	char	*tmp;
 	char	*arr;
+	char	**arrv;
 
 	i = 1;
 	arr = ft_strdup(argv[i]);
 	while (argv[++i])
 	{
 		tmp = arr;
-		arr = ft_strjoin(arr, delim);
+		arr = ft_strjoin(arr, " ");
 		free(tmp);
 		tmp = arr;
 		arr = ft_strjoin(arr, argv[i]);
 		free(tmp);
 	}
-	return (arr);
+	arrv = ft_split(arr, ' ');
+	free(arr);
+	return (arrv);
 }
 
 int
 	main(int argc, char **argv)
 {
-	char	*arr;
+	char	**arrv;
+	int		i;
 
-	arr = NULL;
+	arrv = NULL;
 	if (argc > 1)
-		arr = ps_conv_argvtoarr(argv, "-");
-	ft_printf("%s\n", arr);
-	free(arr);
+		arrv = ps_conv_argvtoarrv(argv);
+	i = -1;
+	while (arrv[++i])
+	{
+		ft_printf("%s\n", arrv[i]);
+		free(arrv[i]);
+	}
+	free(arrv);
 	return (0);
 }
