@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 00:29:17 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 05:38:25 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ void	ps_free(char **arrv, char error);
 void	ps_chk_invalid_arg(char **arrv);
 void	ps_chk_duplicate_arg(char **arrv);
 int		ps_chk_nil(char *arr);
+
+/* converter.c */
+char	**ps_conv_argvtoarrv(char **argv);
+size_t	ps_arrlen(char **arrv);
+int		*ps_atoi_arr(char **arrv);
 
 #endif
