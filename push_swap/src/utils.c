@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 21:37:56 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/18 21:38:48 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 06:49:49 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void
 	while (arrv[++i])
 		free(arrv[i]);
 	free(arrv);
-	if (error == 'E')
+	if (error == 'Y')
 		ps_error();
 }

@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 21:42:32 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 06:17:19 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 07:00:12 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void
 			if (arrv[i][j] == 43 || arrv[i][j] == 45)
 				j++;
 			if (!(ft_isdigit(arrv[i][j++])))
-				ps_free(arrv, 'E');
+				ps_free(arrv, 'Y');
 		}
 		nbr = ft_atoi(arrv[i]);
 		if ((ft_strlen(arrv[i]) > 9 && nbr == 0)
@@ -53,7 +53,7 @@ void
 			if (!ps_chk_nil(arrv[i]))
 				;
 			else
-				ps_free(arrv, 'E');
+				ps_free(arrv, 'Y');
 		}
 	}
 }
@@ -76,7 +76,7 @@ void
 	}
 }
 
-void
+char
 	ps_chk_sorted(int *arr, size_t arrlen)
 {
 	size_t	i;
@@ -85,10 +85,7 @@ void
 	while (++i < arrlen - 1)
 	{
 		if (arr[i + 1] < arr[i])
-		{
-			ft_printf("%d is smaller than %d --- not sorted\n", arr[i + 1], arr[i]);
-			return ;
-		}
+			return ('N');
 	}
-	ft_printf("sorted\n");
+	return ('Y');
 }
