@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 05:38:51 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 06:01:05 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int
 {
 	char	**arrv;
 	int		*arr;
+	size_t	arrlen;
 	size_t	i;
 	size_t	j;
 
@@ -26,6 +27,8 @@ int
 	ps_chk_invalid_arg(arrv);
 	ps_chk_duplicate_arg(arrv);
 	arr = ps_atoi_arr(arrv);
+	arrlen = ps_arrlen(arrv);
+	ps_chk_sorted(arr, arrlen);
 	i = -1;
 	while (arrv[++i])
 	{

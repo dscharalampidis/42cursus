@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 21:42:32 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 02:05:00 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 06:17:19 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,21 @@ void
 				ps_free(arrv, 'E');
 		}
 	}
+}
+
+void
+	ps_chk_sorted(int *arr, size_t arrlen)
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < arrlen - 1)
+	{
+		if (arr[i + 1] < arr[i])
+		{
+			ft_printf("%d is smaller than %d --- not sorted\n", arr[i + 1], arr[i]);
+			return ;
+		}
+	}
+	ft_printf("sorted\n");
 }
