@@ -10,3 +10,5 @@ solution (out of many) for an optimized data sorting.
 ## Key Points
 - Sorting algorithms.
 - Computational complexity.
+- Structs.
+- Linked lists.
