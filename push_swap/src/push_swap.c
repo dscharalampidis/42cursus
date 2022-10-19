@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 05:14:59 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 05:17:11 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ char**
 int*
 	ps_atoi_arr(char **arrv)
 {
-	int	*arr;
-	int	i;
-	int j;
+	int		*arr;
+	size_t	i;
+	size_t	j;
 
 	i = -1;
 	while (arrv[++i])
@@ -58,8 +58,8 @@ int
 {
 	char	**arrv;
 	int		*arr;
-	size_t		i;
-	size_t		j;
+	size_t	i;
+	size_t	j;
 
 	arrv = NULL;
 	if (argc > 1)
