@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 05:17:11 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 05:26:14 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ char**
 	return (arrv);
 }
 
+size_t
+	ps_arrlen(char **arrv)
+{
+	size_t	i;
+
+	i = -1;
+	while (arrv[++i])
+		;
+	return (i);
+}
+
 int*
 	ps_atoi_arr(char **arrv)
 {
@@ -43,10 +54,8 @@ int*
 	size_t	i;
 	size_t	j;
 
-	i = -1;
-	while (arrv[++i])
-		;
-	arr = (int *)malloc(sizeof(i));
+	i = ps_arrlen(arrv);
+	arr = (int *)malloc(sizeof(arr[0]) * i);
 	j = -1;
 	while (++j < i)
 		arr[j] = ft_atoi(arrv[j]);
