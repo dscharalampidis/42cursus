@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 21:42:32 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 00:30:20 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/19 02:05:00 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void
 	i = -1;
 	while (arrv[++i])
 	{
-		j = -1;
-		while (arrv[i][++j])
+		j = 0;
+		while (arrv[i][j])
 		{
 			if (arrv[i][j] == 43 || arrv[i][j] == 45)
 				j++;
