@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 06:57:18 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/21 22:29:12 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define PUSH_SWAP_H
 
 # include "../libft/include/libft.h"
+
+typedef struct s_node
+{
+	int				nbr;
+	struct	s_node	*nxt;
+}					t_node;
 
 /* push_swap.c */
 char	**ps_conv_argvtoarr(char **argv);
