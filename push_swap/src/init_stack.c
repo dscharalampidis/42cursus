@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 23:57:51 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/21 23:58:52 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/22 03:11:58 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void
 	t_node	*current;
 
 	current = head;
-	while (current->nxt != NULL)
+	while (current->nxt)
 		current = current->nxt;
 	current->nxt = (t_node *)malloc(sizeof(t_node));
 	current->nxt->nbr = nbr;
