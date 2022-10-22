@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 21:42:32 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/19 07:00:12 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/22 02:23:49 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void
 		while (arrv[++j])
 		{
 			if (ft_atoi(arrv[i]) == ft_atoi(arrv[j]))
-				ps_free(arrv, 'E');
+				ps_free(arrv, 'Y');
 		}
 	}
 }
