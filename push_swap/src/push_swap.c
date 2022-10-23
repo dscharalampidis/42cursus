@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/22 03:28:56 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/23 02:51:11 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,36 +62,97 @@ int
 }
 
 int
-	ps_find_maxpos(t_node *head)
+	ps_find_min_pos(t_node *head)
 {
 	int		i;
-	int		max;
-	int		max_i;
+	int		min;
+	int		min_i;
 	t_node *current;
 
-	max = INT_MIN;
-	max_i = 1;
+	i = 0;
+	min = INT_MAX;
+	min_i = 1;
 	current = head;
 	while (current)
 	{
-		i++;
-		if (current->nbr > max)
+		++i;
+		if (current->nbr < min)
 		{
-			max = current->nbr;
-			max_i = i;
+			min = current->nbr;
+			min_i = i;
 		}
 		current = current->nxt;
 	}
-	return (max_i);
+	return (min_i);
 }
 
 void
-	ps_find_shortest_path(int max_i, int lstlen)
+	ps_rra(t_node **head_ref, int n)
 {
-	if (max_i <= lstlen / 2)
-		printf("Access the %dth element top. It will take %d rotation(s).\n", max_i, max_i - 1);
+	t_node	*current;
+	t_node	*current_tmp;
+	int		i;
+
+	if (!n)
+		return;
+	current = *head_ref;
+	i = 0;
+	while (++i < n && current)
+	{
+		current = current->nxt;
+		write(1, "rra\n", 3);
+	}
+	if (!current)
+		return;
+	current_tmp = current;
+	while (current->nxt)
+		current = current->nxt;
+	current->nxt = *head_ref;
+	*head_ref = current_tmp->nxt;
+	current_tmp->nxt = NULL;
+	write(1, "rra\n", 3);
+}
+
+void
+	ps_ra(t_node **head_ref, int n)
+{
+	t_node	*current;
+	t_node	*current_tmp;
+	int		i;
+
+	if (!n)
+		return;
+	current = *head_ref;
+	i = 0;
+	while (++i < n && current)
+	{
+		current = current->nxt;
+		printf("%d\n", current->nbr);
+		/* write(1, "ra\n", 3); */
+	}
+	if (!current)
+		return;
+	current_tmp = current;
+	while (current->nxt)
+		current = current->nxt;
+	current->nxt = *head_ref;
+	*head_ref = current_tmp->nxt;
+	current_tmp->nxt = NULL;
+	write(1, "ra\n", 3);
+}
+
+void
+	ps_bring_min_to_top(t_node **head, int min_i, int lstlen)
+{
+	if (min_i <= lstlen / 2 + 1)
+	{
+		printf("Use ra %d time(s).\n", min_i - 1);
+		ps_ra(head, min_i - 1);
+	}
 	else
-		printf("Access the %dth element of the list from the bottom. It will take %d rotation(s).\n", max_i, lstlen - max_i + 1);
+	{
+		printf("Use rra %d time(s).\n", lstlen - min_i + 1);
+	}
 }
 
 int
@@ -100,7 +161,7 @@ int
 	int		*arr;
 	t_node	*stack_a;
 	int		i;
-	int		max_i;
+	int		min_i;
 	int		lstlen;
 
 	if (argc > 1)
@@ -116,9 +177,10 @@ int
 	lstlen = ps_find_lstlen(stack_a);
 	printf("lstlen: %d\n", lstlen);
 	ps_print_list(stack_a);
-	max_i = ps_find_maxpos(stack_a);
-	printf("max_i: %d\n", max_i);
-	ps_find_shortest_path(max_i, lstlen);
+	min_i = ps_find_min_pos(stack_a);
+	printf("min_i: %d\n", min_i);
+	ps_bring_min_to_top(&stack_a, min_i, lstlen);
+	ps_print_list(stack_a);
 	ps_free_list(stack_a);
 	return (0);
 }
