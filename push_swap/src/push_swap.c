@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/23 02:51:11 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/24 00:37:11 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,7 @@ void
 	while (++i < n && current)
 	{
 		current = current->nxt;
-		printf("%d\n", current->nbr);
-		/* write(1, "ra\n", 3); */
+		write(1, "ra\n", 3);
 	}
 	if (!current)
 		return;
