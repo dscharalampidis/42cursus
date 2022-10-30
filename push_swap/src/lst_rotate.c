@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   lst_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 23:57:51 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/22 03:11:58 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/30 20:51:32 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/30 20:52:18 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node*
-	ps_init_stack(t_node *head, int nbr)
+void
+	ps_rotate_lst(t_node **head)
 {
-	head = NULL;
-	head = (t_node *)malloc(sizeof(t_node));
-	head->nbr = nbr;
-	head->nxt = NULL;
-	return (head);
+	t_node	*curr;
+	t_node	*tmp;
+
+	curr = *head;
+	tmp = curr;
+	while (curr->nxt)
+		curr = curr->nxt;
+	curr->nxt = *head;
+	*head = tmp->nxt;
+	tmp->nxt = NULL;
 }
 
 void
-	ps_push_end(t_node *head, int nbr)
+	ps_reverse_rotate_lst(t_node **head)
 {
-	t_node	*current;
+	t_node	*curr;
 
-	current = head;
-	while (current->nxt)
-		current = current->nxt;
-	current->nxt = (t_node *)malloc(sizeof(t_node));
-	current->nxt->nbr = nbr;
-	current->nxt->nxt = NULL;
+	curr = *head;
+	while (curr->nxt)
+		curr = curr->nxt;
+	ps_insert_int_lst_head(head, curr->nbr);
+	ps_remove_lst_tail(head);
 }

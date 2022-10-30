@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/22 00:00:32 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/30 20:52:39 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include "../libft/include/libft.h"
 
-typedef struct s_node
+struct s_node
 {
 	int				nbr;
 	struct s_node	*nxt;
-}					t_node;
+};
+
+typedef struct s_node t_node;
 
 /* push_swap.c */
 char	**ps_conv_argvtoarr(char **argv);
@@ -27,7 +29,6 @@ char	**ps_conv_argvtoarr(char **argv);
 /* utils.c */
 void	ps_error(void);
 void	ps_free(char **arrv, char error);
-void	ps_free_list(t_node *head);
 
 /* checker.c */
 void	ps_chk_invalid_arg(char **arrv);
@@ -40,8 +41,20 @@ char	**ps_conv_argvtoarrv(char **argv);
 size_t	ps_arrlen(char **arrv);
 int		*ps_atoi_arr(char **arrv);
 
-/* init_stack.c */
-t_node	*ps_init_stack(t_node *head, int nbr);
-void	ps_push_end(t_node *head, int nbr);
+/* lst_utils.c */
+t_node	*ps_init_lst(t_node *head, int nbr);
+void	ps_free_lst(t_node **head);
+int		ps_find_lst_len(t_node *head);
+void	ps_print_lst(t_node *head);
+
+/* lst_ops.c */
+void	ps_insert_int_lst_head(t_node **head, int nbr);
+void	ps_insert_int_lst_tail(t_node **head, int nbr);
+void	ps_remove_lst_head(t_node **head);
+void	ps_remove_lst_tail(t_node **head);
+
+/* lst_rotate.c */
+void	ps_rotate_lst(t_node **head);
+void	ps_reverse_rotate_lst(t_node **head);
 
 #endif
