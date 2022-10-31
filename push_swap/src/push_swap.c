@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/30 20:53:01 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/30 21:48:34 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,14 @@ int
 	int		i;
 	int		min_i;
 	int		lstlen;
+	t_node	*stack_b;
 
 	if (argc > 1)
 		arr = ps_parse_arg(argv);
 	else
 		return (0);
 	stack_a = NULL;
+	stack_b = NULL;
 	stack_a = ps_init_lst(stack_a, arr[0]);
 	i = 0;
 	while (++i < argc -1)
@@ -108,6 +110,10 @@ int
 	printf("min_i: %d\n", min_i);
 	ps_bring_min_to_top(&stack_a, min_i, lstlen);
 	ps_print_lst(stack_a);
+	printf("Push from A to B\n");
+	ps_push(&stack_a, &stack_b);
+	printf("Printing stack B\n");
+	ps_print_lst(stack_b);
 	printf("Deleting the first node\n");
 	ps_remove_lst_head(&stack_a);
 	ps_print_lst(stack_a);

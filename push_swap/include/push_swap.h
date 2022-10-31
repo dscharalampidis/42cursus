@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/30 20:52:39 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/30 21:49:52 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,8 @@ void	ps_remove_lst_tail(t_node **head);
 /* lst_rotate.c */
 void	ps_rotate_lst(t_node **head);
 void	ps_reverse_rotate_lst(t_node **head);
+
+/* lst_push.c */
+void	ps_push(t_node **from, t_node **to);
 
 #endif
