@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/30 21:48:34 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/31 21:35:00 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,9 @@ int
 	ps_print_lst(stack_b);
 	printf("Deleting the first node\n");
 	ps_remove_lst_head(&stack_a);
+	ps_print_lst(stack_a);
+	printf("Swapping the top two nodes...\n");
+	ps_swap(&stack_a);
 	ps_print_lst(stack_a);
 	ps_free_lst(&stack_a);
 	return (0);
