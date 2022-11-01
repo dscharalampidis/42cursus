@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/01 15:58:00 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:08:13 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ int
 	return 0;
 }
 
+/* Find the minimum and find the fastest path to bring it to top by rotating or
+ * reverse rotating. While rotating check if the second to top number is smaller
+ * than the top and swap them. Keep doing this and when the minimum is at the
+ * top, push it to stack B. Finally, push everything back to A. */
 void
 	ps_trytosort(t_node **stack_a, t_node **stack_b, int min_i, int lstlen)
 {
@@ -125,6 +129,42 @@ void
 	}
 }
 
+/* Find the minimum, find the fastest path to bring it to top by rotating or
+ * reverse rotating and then push it to stack B. Finally, push everything back
+ * to A. */
+void
+	ps_sort_ins(t_node **stack_a, t_node **stack_b,  int min_i, int lstlen)
+{
+	int	i;
+
+	while (ps_chk_lst_sorted(*stack_a) != 0 && stack_a)
+	{
+		if (min_i <= lstlen / 2 + 1)
+		{
+			/* printf("Use ra %d time(s).\n", min_i - 1); */
+			while (min_i-- - 1)
+			{
+				printf("ra\n");
+				ps_rotate_lst(stack_a);
+			}
+		}
+		else
+		{
+			/* printf("Use rra %d time(s).\n", lstlen - min_i + 1); */
+			i = lstlen - min_i + 1;
+			while (i--)
+			{
+				printf("rra\n");
+				ps_reverse_rotate_lst(stack_a);
+			}
+		}
+		printf("pb\n");
+		ps_push(stack_a, stack_b);
+		lstlen = ps_find_lst_len(*stack_a);
+		min_i = ps_find_min_pos(*stack_a);
+	}
+}
+
 void
 	ps_backtoa(t_node **stack_a, t_node **stack_b)
 {
@@ -167,7 +207,8 @@ int
 		ps_swap(&stack_a);
 		return (0);
 	}
-	ps_trytosort(&stack_a, &stack_b, min_i, lstlen);
+	ps_sort_ins(&stack_a, &stack_b, min_i, lstlen);
+	/* ps_trytosort(&stack_a, &stack_b, min_i, lstlen); */
 	/* printf("--- Stack A ---\n"); */
 	/* ps_print_lst(stack_a); */
 	/* printf("--- Stack B ---\n"); */
