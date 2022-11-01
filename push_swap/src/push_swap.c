@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/31 21:35:00 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/31 22:25:11 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,34 @@ int
 }
 
 void
-	ps_bring_min_to_top(t_node **head, int min_i, int lstlen)
+	ps_trytosort(t_node **stack_a, t_node **stack_b, int min_i, int lstlen)
 {
-	int	i;
-
-	if (min_i <= lstlen / 2 + 1)
+	while (min_i != 1 && *stack_a)
 	{
-		printf("Use ra %d time(s).\n", min_i - 1);
-		while (min_i-- - 1)
-			ps_rotate_lst(head);
-	}
-	else
-	{
-		printf("Use rra %d time(s).\n", lstlen - min_i + 1);
-		i = lstlen - min_i + 1;
-		while (i--)
-			ps_reverse_rotate_lst(head);
+		if ((*stack_a)->nxt->nbr < (*stack_a)->nbr)
+		{
+			printf("sa\n");
+			ps_swap(stack_a);
+			min_i = ps_find_min_pos(*stack_a);
+			printf("new min_i: %d\n", min_i);
+		}
+		if (min_i != 1 && min_i <= lstlen / 2 + 1)
+		{	
+			printf("ra\n");
+			ps_rotate_lst(stack_a);
+		}
+		else if (min_i != 1 && min_i > lstlen / 2 + 1)
+		{
+			printf("rra\n");
+			ps_reverse_rotate_lst(stack_a);
+		}
+		else
+		{
+			printf("pb\n");
+			ps_push(stack_a, stack_b);
+			lstlen = ps_find_lst_len(*stack_a);
+			min_i = ps_find_min_pos(*stack_a);
+		}
 	}
 }
 
@@ -104,22 +116,25 @@ int
 		ps_insert_int_lst_tail(&stack_a, arr[i]);
 	free(arr);
 	lstlen = ps_find_lst_len(stack_a);
-	printf("lstlen: %d\n", lstlen);
+	printf("--- Stack A ---\n");
 	ps_print_lst(stack_a);
 	min_i = ps_find_min_pos(stack_a);
 	printf("min_i: %d\n", min_i);
-	ps_bring_min_to_top(&stack_a, min_i, lstlen);
+	ps_trytosort(&stack_a, &stack_b, min_i, lstlen);
+	printf("--- Stack A ---\n");
 	ps_print_lst(stack_a);
-	printf("Push from A to B\n");
-	ps_push(&stack_a, &stack_b);
-	printf("Printing stack B\n");
+	printf("--- Stack B ---\n");
 	ps_print_lst(stack_b);
-	printf("Deleting the first node\n");
-	ps_remove_lst_head(&stack_a);
-	ps_print_lst(stack_a);
-	printf("Swapping the top two nodes...\n");
-	ps_swap(&stack_a);
-	ps_print_lst(stack_a);
+/* printf("Push from A to B\n"); */
+	/* ps_push(&stack_a, &stack_b); */
+	/* printf("Printing stack B\n"); */
+	/* ps_print_lst(stack_b); */
+	/* printf("Deleting the first node\n"); */
+	/* ps_remove_lst_head(&stack_a); */
+	/* ps_print_lst(stack_a); */
+	/* printf("Swapping the top two nodes...\n"); */
+	/* ps_swap(&stack_a); */
+	/* ps_print_lst(stack_a); */
 	ps_free_lst(&stack_a);
 	return (0);
 }
