@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/02 03:18:11 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:50:07 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,77 @@ int
 	int		i;
 	int		min;
 	int		min_i;
-	t_node	*current;
+	t_node	*curr;
 
 	i = 0;
 	min = INT_MAX;
 	min_i = 1;
-	current = head;
-	while (current)
+	curr = head;
+	while (curr)
 	{
 		++i;
-		if (current->nbr < min)
+		if (curr->nbr < min)
 		{
-			min = current->nbr;
+			min = curr->nbr;
 			min_i = i;
 		}
-		current = current->nxt;
+		curr = curr->nxt;
 	}
 	return (min_i);
+}
+
+t_node*
+	qs_find_last_node(t_node *head)
+{
+	t_node	*tmp;
+
+	tmp = head;
+	while (tmp && tmp->nxt)
+		tmp = tmp->nxt;
+	return (tmp);
+}
+
+t_node*
+	qs_partition(t_node *first, t_node *last)
+{
+	t_node	*pivot;
+	t_node	*front;
+	int		tmp;
+
+	pivot = first;
+	front = first;
+	tmp = 0;
+	while (front && front != last)
+	{
+		if (front->nbr < last->nbr)
+		{
+			pivot = first;
+			tmp = first->nbr;
+			first->nbr = front->nbr;
+			front->nbr = tmp;
+			first = first->nxt;
+		}
+		front = front->nxt;
+	}
+	tmp = first->nbr;
+	first->nbr = last->nbr;
+	last->nbr = tmp;
+	return (pivot);
+}
+
+void
+	qs_quicksort(t_node *first, t_node *last)
+{
+	t_node	*pivot;
+
+
+	if (first == last)
+		return ;
+	pivot = qs_partition(first, last);
+	if (pivot && pivot->nxt)
+		qs_quicksort(pivot->nxt, last);
+	if (pivot && first != pivot)
+		qs_quicksort(first, pivot);
 }
 
 /* Find the minimum and find the fastest path to bring it to top by rotating or
@@ -125,6 +179,46 @@ void
 	exit(EXIT_SUCCESS);
 }
 
+t_node*
+	ps_dup_lst(t_node *head)
+{
+	t_node	*copy;
+
+	if (!head)
+		return (NULL);
+	copy = (t_node *)malloc(sizeof(t_node));
+	if (!copy)
+		exit (EXIT_FAILURE);
+	copy->nbr = head->nbr;
+	copy->nxt = ps_dup_lst(head->nxt);
+	return (copy);
+}
+
+int
+	ps_find_med(t_node *head)
+{
+	t_node	*copy;
+	int		med_i;
+	int		med;
+	int		i;
+	t_node *copy_head;
+
+	copy = ps_dup_lst(head);
+	printf("--- Before Quicksort Copy ---\n");
+	copy_head = copy;
+	ps_print_lst(copy);
+	qs_quicksort(copy, qs_find_last_node(copy));
+	med_i = ps_find_lst_len(copy) / 2;
+	i = -1;
+	while (++i < med_i)
+		copy = copy->nxt;
+	med = copy->nbr;
+	printf("--- After Quicksort Curr ---\n");
+	ps_print_lst(copy_head);
+	ps_free_lst(&copy_head);
+	return (med);
+}
+
 int
 	main(int argc, char **argv)
 {
@@ -133,16 +227,16 @@ int
 	int		i;
 	/* int		min_i; */
 	int		lstlen;
-	t_node	*stack_b;
+	/* t_node	*stack_b; */
 
 	if (argc > 1)
 		arr = ps_parse_arg(argv);
 	else
 		return (0);
 	stack_a = NULL;
-	stack_b = NULL;
-	stack_a = ps_init_lst(stack_a, arr[0]);
-	i = 0;
+	/* stack_b = NULL; */
+	/* stack_a = ps_init_lst(stack_a, arr[0]); */
+	i = -1;
 	while (++i < argc -1)
 		ps_insert_int_lst_tail(&stack_a, arr[i]);
 	free(arr);
@@ -151,7 +245,10 @@ int
 	if (stack_a->nxt->nbr < stack_a->nbr && lstlen == 2)
 		ps_sort_two(&stack_a);
 	/* ps_sort_rp(&stack_a, &stack_b, min_i, lstlen); */
-	ps_sort_srp(&stack_a, &stack_b, lstlen);
+	/* ps_sort_srp(&stack_a, &stack_b, lstlen); */
+	printf("med: %d\n", ps_find_med(stack_a));
+	printf("--- Stack A ---\n");
+	ps_print_lst(stack_a);
 	ps_free_lst(&stack_a);
 	return (0);
 }
