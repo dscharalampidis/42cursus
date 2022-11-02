@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/02 02:58:20 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:38:00 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 struct s_node
 {
 	int				nbr;
+	int				idx;
 	struct s_node	*nxt;
 };
 

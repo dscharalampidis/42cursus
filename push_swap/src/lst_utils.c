@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 23:57:51 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/02 02:57:48 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:18:58 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void
 	while (curr)
 	{
 		i++;
-		printf("list[%d]: %d\n", i, curr->nbr);
+		printf("list[%d]:\tnbr: %10d\n", i, curr->nbr);
 		curr = curr->nxt;
 	}
 }
