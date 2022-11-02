@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/01 17:08:13 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/02 03:18:11 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int*
 }
 
 int
-	ps_find_min_pos(t_node *head)
+	ps_find_min(t_node *head)
 {
 	int		i;
 	int		min;
@@ -62,117 +62,67 @@ int
 	return (min_i);
 }
 
-int
-	ps_chk_lst_sorted(t_node *head)
-{
-	if (head == NULL)
-		return 0;
-	while (head->nxt)
-	{
-		if (head->nbr > head->nxt->nbr)
-			return 1;
-		head = head->nxt;
-	}
-	return 0;
-}
-
 /* Find the minimum and find the fastest path to bring it to top by rotating or
  * reverse rotating. While rotating check if the second to top number is smaller
  * than the top and swap them. Keep doing this and when the minimum is at the
  * top, push it to stack B. Finally, push everything back to A. */
 void
-	ps_trytosort(t_node **stack_a, t_node **stack_b, int min_i, int lstlen)
+	ps_sort_srp(t_node **stack_a, t_node **stack_b, int lstlen)
 {
-	while (ps_chk_lst_sorted(*stack_a) != 0 && *stack_a)
+	while (!ps_chk_lst_sorted(*stack_a))
 	{
 		if ((*stack_a)->nxt->nbr < (*stack_a)->nbr)
-		{
-			printf("sa\n");
-			ps_swap(stack_a);
-			min_i = ps_find_min_pos(*stack_a);
-			/* printf("--- Stack A ---\n"); */
-			/* ps_print_lst(*stack_a); */
-			/* printf("--- Stack B ---\n"); */
-			/* ps_print_lst(*stack_b); */
-		}
-		if (min_i != 1 && min_i <= lstlen / 2 + 1)
-		{	
-			printf("ra\n");
-			ps_rotate_lst(stack_a);
-			min_i = ps_find_min_pos(*stack_a);
-			/* printf("--- Stack A ---\n"); */
-			/* ps_print_lst(*stack_a); */
-			/* printf("--- Stack B ---\n"); */
-			/* ps_print_lst(*stack_b); */
-		}
-		else if (min_i != 1 && min_i > lstlen / 2 + 1)
-		{
-			printf("rra\n");
-			ps_reverse_rotate_lst(stack_a);
-			min_i = ps_find_min_pos(*stack_a);
-			/* printf("--- Stack A ---\n"); */
-			/* ps_print_lst(*stack_a); */
-			/* printf("--- Stack B ---\n"); */
-			/* ps_print_lst(*stack_b); */
-		}
+			ps_sa(stack_a);
+		if (ps_find_min(*stack_a) != 1
+			&& ps_find_min(*stack_a) <= lstlen / 2 + 1)
+			ps_ra(stack_a);
+		else if (ps_find_min(*stack_a) != 1
+			&& ps_find_min(*stack_a) > lstlen / 2 + 1)
+			ps_rra(stack_a);
 		else
 		{
-			printf("pb\n");
-			ps_push(stack_a, stack_b);
+			ps_pb(stack_a, stack_b);
 			lstlen = ps_find_lst_len(*stack_a);
-			min_i = ps_find_min_pos(*stack_a);
-			/* printf("--- Stack A ---\n"); */
-			/* ps_print_lst(*stack_a); */
-			/* printf("--- Stack B ---\n"); */
-			/* ps_print_lst(*stack_b); */
 		}
 	}
+	while (*stack_b)
+		ps_pa(stack_b, stack_a);
 }
 
 /* Find the minimum, find the fastest path to bring it to top by rotating or
  * reverse rotating and then push it to stack B. Finally, push everything back
  * to A. */
 void
-	ps_sort_ins(t_node **stack_a, t_node **stack_b,  int min_i, int lstlen)
+	ps_sort_rp(t_node **stack_a, t_node **stack_b, int min_i, int lstlen)
 {
 	int	i;
 
-	while (ps_chk_lst_sorted(*stack_a) != 0 && stack_a)
+	while (!ps_chk_lst_sorted(*stack_a))
 	{
 		if (min_i <= lstlen / 2 + 1)
 		{
-			/* printf("Use ra %d time(s).\n", min_i - 1); */
 			while (min_i-- - 1)
-			{
-				printf("ra\n");
-				ps_rotate_lst(stack_a);
-			}
+				ps_ra(stack_a);
 		}
 		else
 		{
-			/* printf("Use rra %d time(s).\n", lstlen - min_i + 1); */
 			i = lstlen - min_i + 1;
 			while (i--)
-			{
-				printf("rra\n");
-				ps_reverse_rotate_lst(stack_a);
-			}
+				ps_rra(stack_a);
 		}
-		printf("pb\n");
-		ps_push(stack_a, stack_b);
+		ps_pb(stack_a, stack_b);
 		lstlen = ps_find_lst_len(*stack_a);
-		min_i = ps_find_min_pos(*stack_a);
+		min_i = ps_find_min(*stack_a);
 	}
+	while (*stack_b)
+		ps_pa(stack_b, stack_a);
 }
 
 void
-	ps_backtoa(t_node **stack_a, t_node **stack_b)
+	ps_sort_two(t_node **head)
 {
-	while (*stack_b)
-	{
-		printf("pa\n");
-		ps_push(stack_b, stack_a);
-	}
+	ps_sa(head);
+	exit(EXIT_SUCCESS);
 }
 
 int
@@ -181,7 +131,7 @@ int
 	int		*arr;
 	t_node	*stack_a;
 	int		i;
-	int		min_i;
+	/* int		min_i; */
 	int		lstlen;
 	t_node	*stack_b;
 
@@ -197,38 +147,11 @@ int
 		ps_insert_int_lst_tail(&stack_a, arr[i]);
 	free(arr);
 	lstlen = ps_find_lst_len(stack_a);
-	/* printf("--- Original Stack A ---\n"); */
-	/* ps_print_lst(stack_a); */
-	min_i = ps_find_min_pos(stack_a);
-	/* printf("min_i: %d\n", min_i); */
+	/* min_i = ps_find_min(stack_a); */
 	if (stack_a->nxt->nbr < stack_a->nbr && lstlen == 2)
-	{
-		printf("sa\n");
-		ps_swap(&stack_a);
-		return (0);
-	}
-	ps_sort_ins(&stack_a, &stack_b, min_i, lstlen);
-	/* ps_trytosort(&stack_a, &stack_b, min_i, lstlen); */
-	/* printf("--- Stack A ---\n"); */
-	/* ps_print_lst(stack_a); */
-	/* printf("--- Stack B ---\n"); */
-	/* ps_print_lst(stack_b); */
-	ps_backtoa(&stack_a, &stack_b);
-	/* printf("--- Stack A ---\n"); */
-	/* ps_print_lst(stack_a); */
-	/* printf("--- Stack B ---\n"); */
-	/* ps_print_lst(stack_b); */
-	/* printf("%d\n", ps_chk_lst_sorted(stack_a)); */
-	/* printf("Push from A to B\n"); */
-	/* ps_push(&stack_a, &stack_b); */
-	/* printf("Printing stack B\n"); */
-	/* ps_print_lst(stack_b); */
-	/* printf("Deleting the first node\n"); */
-	/* ps_remove_lst_head(&stack_a); */
-	/* ps_print_lst(stack_a); */
-	/* printf("Swapping the top two nodes...\n"); */
-	/* ps_swap(&stack_a); */
-	/* ps_print_lst(stack_a); */
+		ps_sort_two(&stack_a);
+	/* ps_sort_rp(&stack_a, &stack_b, min_i, lstlen); */
+	ps_sort_srp(&stack_a, &stack_b, lstlen);
 	ps_free_lst(&stack_a);
 	return (0);
 }

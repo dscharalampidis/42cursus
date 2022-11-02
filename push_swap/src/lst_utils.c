@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 23:57:51 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/30 17:26:18 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/02 02:57:48 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,18 @@ void
 		printf("list[%d]: %d\n", i, curr->nbr);
 		curr = curr->nxt;
 	}
+}
+
+int
+	ps_chk_lst_sorted(t_node *head)
+{
+	if (head == NULL)
+		return (1);
+	while (head->nxt)
+	{
+		if (head->nbr > head->nxt->nbr)
+			return (0);
+		head = head->nxt;
+	}
+	return (1);
 }
