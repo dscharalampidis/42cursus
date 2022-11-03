@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/03 00:53:11 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:33:55 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ size_t	ps_arrlen(char **arrv);
 int		*ps_atoi_arr(char **arrv);
 
 /* lst_utils.c */
-t_node	*ps_init_lst(t_node *head, int nbr);
 void	ps_free_lst(t_node **head);
 int		ps_find_lst_len(t_node *head);
-void	ps_print_lst(t_node *head);
 int		ps_chk_lst_sorted(t_node *head);
 
 /* lst_ops.c */
