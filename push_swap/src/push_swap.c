@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/03 12:38:21 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:49:36 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,60 +60,6 @@ int
 		curr = curr->nxt;
 	}
 	return (min_i);
-}
-
-t_node*
-	qs_find_last_node(t_node *head)
-{
-	t_node	*tmp;
-
-	tmp = head;
-	while (tmp && tmp->nxt)
-		tmp = tmp->nxt;
-	return (tmp);
-}
-
-t_node*
-	qs_partition(t_node *first, t_node *last)
-{
-	t_node	*pivot;
-	t_node	*front;
-	int		tmp;
-
-	pivot = first;
-	front = first;
-	tmp = 0;
-	while (front && front != last)
-	{
-		if (front->nbr < last->nbr)
-		{
-			pivot = first;
-			tmp = first->nbr;
-			first->nbr = front->nbr;
-			front->nbr = tmp;
-			first = first->nxt;
-		}
-		front = front->nxt;
-	}
-	tmp = first->nbr;
-	first->nbr = last->nbr;
-	last->nbr = tmp;
-	return (pivot);
-}
-
-void
-	qs_quicksort(t_node *first, t_node *last)
-{
-	t_node	*pivot;
-
-
-	if (first == last)
-		return ;
-	pivot = qs_partition(first, last);
-	if (pivot && pivot->nxt)
-		qs_quicksort(pivot->nxt, last);
-	if (pivot && first != pivot)
-		qs_quicksort(first, pivot);
 }
 
 /* Find the minimum and find the fastest path to bring it to top by rotating or
@@ -207,7 +153,7 @@ void
 	trick = (*unsorted)->nbr;
 	sorted = ps_dup_lst(*unsorted);
 	sorted_head = sorted;
-	qs_quicksort(sorted, qs_find_last_node(sorted));
+	qs_quicksort(sorted, qs_find_tail(sorted));
 	i = 1;
 	while (sorted)
 	{

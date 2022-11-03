@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/03 12:33:55 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:47:04 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,10 @@ void	ps_pb(t_node **from, t_node **to);
 void	ps_swap(t_node **head);
 void	ps_sa(t_node **head);
 void	ps_sb(t_node **head);
+
+/* quicksort.c */
+t_node	*qs_find_tail(t_node *head);
+t_node	*qs_partition(t_node *start, t_node *end);
+void	qs_quicksort(t_node *start, t_node *end);
 
 #endif
