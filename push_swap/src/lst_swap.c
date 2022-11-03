@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 21:28:52 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/02 02:32:26 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 02:28:40 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 void
 	ps_swap(t_node **head)
 {
-	int	tmp1;
-	int	tmp2;
+	int	nbr1;
+	int	idx1;
+	int	nbr2;
+	int	idx2;
 
-	tmp1 = (*head)->nbr;
-	tmp2 = (*head)->nxt->nbr;
+	nbr1 = (*head)->nbr;
+	idx1 = (*head)->idx;
+	nbr2 = (*head)->nxt->nbr;
+	idx2 = (*head)->nxt->idx;
 	ps_remove_lst_head(head);
 	ps_remove_lst_head(head);
-	ps_insert_int_lst_head(head, tmp1);
-	ps_insert_int_lst_head(head, tmp2);
+	ps_insert_int_lst_head(head, nbr1, idx1);
+	ps_insert_int_lst_head(head, nbr2, idx2);
 }
 
 void

@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:10:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/02 23:27:06 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 03:09:23 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,16 +255,16 @@ void
 	int		i;
 	t_node	*sorted;
 	t_node	*sorted_head;
-	t_node	*unsorted_head;
+	int		trick;
 	
-	unsorted_head = *unsorted;
+	trick = (*unsorted)->nbr;
 	sorted = ps_dup_lst(*unsorted);
 	sorted_head = sorted;
-	printf("--- Before Sorting ---\n");
-	ps_print_lst(sorted_head);
+	/* printf("--- Before Sorting ---\n"); */
+	/* ps_print_lst(sorted_head); */
 	qs_quicksort(sorted, qs_find_last_node(sorted));
-	printf("--- After Sorting ---\n");
-	ps_print_lst(sorted_head);
+	/* printf("--- After Sorting ---\n"); */
+	/* ps_print_lst(sorted_head); */
 	i = 1;
 	while (sorted)
 	{
@@ -278,6 +278,35 @@ void
 			ps_rotate_lst(unsorted);
 	}
 	ps_free_lst(&sorted_head);
+	while ((*unsorted)->nbr != trick)
+		ps_rotate_lst(unsorted);
+}
+
+void
+	ps_sort_chunks(t_node **stack_a, t_node **stack_b)
+{
+	int	chunk_size;
+	int	d;
+	int	i;
+	int	j;
+
+	d = 15;
+	chunk_size = ps_find_lst_len(*stack_a) / d;
+	i = 0;
+	while (++i <= d)
+	{
+		j = chunk_size;
+		while (j)
+			if ((*stack_a)->idx <= chunk_size * i)
+			{
+				j--;
+				ps_pb(stack_a, stack_b);
+			}
+			else
+				ps_ra(stack_a);
+	}
+	while (*stack_b)
+		ps_pa(stack_b, stack_a);
 }
 
 int
@@ -299,7 +328,7 @@ int
 	/* stack_a = ps_init_lst(stack_a, arr[0]); */
 	i = -1;
 	while (++i < argc -1)
-		ps_insert_int_lst_tail(&stack_a, arr[i]);
+		ps_insert_int_lst_tail(&stack_a, arr[i], 0);
 	free(arr);
 	/* printf("--- Stack A ---\n"); */
 	/* ps_print_lst(stack_a); */
@@ -309,14 +338,22 @@ int
 	min_i = ps_find_min(stack_a);
 	if (stack_a->nxt->nbr < stack_a->nbr && lstlen == 2)
 		ps_sort_two(&stack_a);
-	if (lstlen > 2 && lstlen < 9)
+	if (lstlen > 2 && lstlen < 10)
 	{
 		ps_sort_srp(&stack_a, &stack_b, lstlen);
 		exit (EXIT_SUCCESS);
 	}
+	/* printf("--- from main: Before Indexing ---\n"); */
+	/* ps_print_lst_idx(stack_a); */
 	ps_index_stack(&stack_a);
-	printf("--- from main: After Indexing ---\n");
-	ps_print_lst_idx(stack_a);
+	/* printf("--- from main: After Indexing ---\n"); */
+	/* ps_print_lst_idx(stack_a); */
+	ps_sort_chunks(&stack_a, &stack_b);
+	ps_sort_srp(&stack_a, &stack_b, lstlen);
+	/* printf("--- sort chunks: A ---\n"); */
+	/* ps_print_lst_idx(stack_a); */
+	/* printf("--- sort chunks: B ---\n"); */
+	/* ps_print_lst_idx(stack_b); */
 	/* printf("med: %d\n", ps_find_med(stack_a)); */
 	/* ps_sort_med(&stack_a, &stack_b); */
 	/* printf("--- Stack A ---\n"); */

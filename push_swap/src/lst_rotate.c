@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:51:32 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/02 02:21:44 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 02:27:57 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void
 	curr = *head;
 	while (curr->nxt)
 		curr = curr->nxt;
-	ps_insert_int_lst_head(head, curr->nbr);
+	ps_insert_int_lst_head(head, curr->nbr, curr->idx);
 	ps_remove_lst_tail(head);
 }
 

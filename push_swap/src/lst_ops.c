@@ -6,14 +6,14 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:31:15 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/30 20:52:13 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 01:32:55 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void
-	ps_insert_int_lst_head(t_node **head, int nbr)
+	ps_insert_int_lst_head(t_node **head, int nbr, int idx)
 {
 	t_node	*new_node;
 
@@ -21,12 +21,13 @@ void
 	if (!new_node)
 		exit (EXIT_FAILURE);
 	new_node->nbr = nbr;
+	new_node->idx = idx;
 	new_node->nxt = *head;
 	*head = new_node;
 }
 
 void
-	ps_insert_int_lst_tail(t_node **head, int nbr)
+	ps_insert_int_lst_tail(t_node **head, int nbr, int idx)
 {
 	t_node	*new_node;
 	t_node	*curr;
@@ -35,6 +36,7 @@ void
 	if (!new_node)
 		exit (EXIT_FAILURE);
 	new_node->nbr = nbr;
+	new_node->idx = idx;
 	new_node->nxt = NULL;
 	if (!*head)
 	{

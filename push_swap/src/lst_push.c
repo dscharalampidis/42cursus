@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:35:08 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/02 02:33:43 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 01:44:29 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void
 	ps_push(t_node **from, t_node **to)
 {
-	ps_insert_int_lst_head(to, (*from)->nbr);
+	ps_insert_int_lst_head(to, (*from)->nbr, (*from)->idx);
 	ps_remove_lst_head(from);
 }
 
