@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:18:06 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/04 17:49:40 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:05:57 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void
 		ps_pa(stack_b, stack_a);
 }
 
+/* Just swap. It's the fastest for two numbers. */
 void
 	ps_sort_two(t_node **head)
 {
@@ -78,7 +79,8 @@ void
 /* Find the minimum and find the fastest path to bring it to top by rotating or
  * reverse rotating. While rotating check if the second to top number is smaller
  * than the top and swap them. Keep doing this and when the minimum is at the
- * top, push it to stack B. Finally, push everything back to A. */
+ * top, push it to stack B. Finally, push everything back to A. It's the fastest
+ * for less than 10 numbers. */
 void
 	ps_sort_srp(t_node **stack_a, t_node **stack_b)
 {
@@ -107,7 +109,8 @@ void
 
 /* Find the minimum, find the fastest path to bring it to top by rotating or
  * reverse rotating and then push it to stack B. Finally, push everything back
- * to A. */
+ * to A. It requires long lists to be organised in chunks, but after that it's
+ * faster than the srp algo above. */
 void
 	ps_sort_rp(t_node **stack_a, t_node **stack_b, int min_i, int lstlen)
 {
