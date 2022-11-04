@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/03 12:47:04 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:44:59 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ struct s_node
 };
 
 typedef struct s_node	t_node;
-
-/* push_swap.c */
-char	**ps_conv_argvtoarr(char **argv);
 
 /* utils.c */
 void	ps_error(void);
@@ -46,6 +43,8 @@ int		*ps_atoi_arr(char **arrv);
 void	ps_free_lst(t_node **head);
 int		ps_find_lst_len(t_node *head);
 int		ps_chk_lst_sorted(t_node *head);
+int		ps_find_min_i(t_node *head);
+t_node	*ps_dup_lst(t_node *head);
 
 /* lst_ops.c */
 void	ps_insert_int_lst_head(t_node **head, int nbr, int idx);
@@ -73,5 +72,12 @@ void	ps_sb(t_node **head);
 t_node	*qs_find_tail(t_node *head);
 t_node	*qs_partition(t_node *start, t_node *end);
 void	qs_quicksort(t_node *start, t_node *end);
+
+/* ps_sort.c */
+void	ps_index_stack(t_node **unsorted);
+void	ps_sort_chunks(t_node **stack_a, t_node **stack_b, int n);
+void	ps_sort_two(t_node **head);
+void	ps_sort_srp(t_node **stack_a, t_node **stack_b);
+void	ps_sort_rp(t_node **stack_a, t_node **stack_b, int min_i, int lstlen);
 
 #endif

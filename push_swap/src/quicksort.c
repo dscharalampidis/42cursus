@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:40:57 by dcharala          #+#    #+#             */
-/*   Updated: 2022/11/03 12:48:02 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:52:18 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void
 	qs_quicksort(t_node *start, t_node *end)
 {
 	t_node	*pivot;
-
 
 	if (start == end)
 		return ;
