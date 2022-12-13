@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pf_convert_chr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 03:14:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/12/13 04:09:39 by dcharala         ###   ########.fr       */
+/*   Created: 2022/10/15 01:09:00 by dcharala          #+#    #+#             */
+/*   Updated: 2022/10/15 19:34:57 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "../libft/include/libft.h"
+int
+	pf_convert_chr(va_list ap)
+{
+	char	c;
 
-/* errors.c */
-void	chk_args(int argc);
-
-/* processes.c */
-void	pipex(char **argv, char **envp);
-
-/* utilities.c */
-
-#endif
-
+	c = va_arg(ap, int);
+	return (write(1, &c, 1));
+}

@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 01:31:30 by dcharala          #+#    #+#             */
-/*   Updated: 2022/12/13 03:30:53 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/12/13 04:14:16 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int
 	main(int argc, char **argv, char **envp)
 {
 	chk_args(argc);
-
+	pipex(argv, envp);
 	return (0);
 }

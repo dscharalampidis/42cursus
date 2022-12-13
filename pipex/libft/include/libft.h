@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 01:33:45 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 06:17:04 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/10/15 22:12:46 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 #  include <limits.h>
 #  include <stddef.h>
 #  include <stdint.h>
+#  include <stdarg.h>
+#  ifndef OS_FLAG
+#   define OS_FLAG 'L'
+#  endif
 # elif __APPLE__
 #  include <fcntl.h>
 #  include <stdio.h>
@@ -31,6 +35,10 @@
 #  include <unistd.h>
 #  include <limits.h>
 #  include <stdint.h>
+#  include <stdarg.h>
+#  ifndef OS_FLAG
+#   define OS_FLAG 'A'
+#  endif
 # endif
 
 # ifndef BUFFER_SIZE
@@ -78,5 +86,27 @@ void	ft_putnbr_fd(int n, int fd);
 
 /* get_next_line */
 char	*get_next_line(int fd);
+
+/* ft_printf | ft_printf.c */
+int		ft_printf(const char *fmt, ...);
+void	pf_get_specifiers(va_list ap, char *fmt, int *nbytes);
+int		pf_distribute_conversion(char specifier, va_list ap);
+
+/* ft_printf | pf_convert_chr.c */
+int		pf_convert_chr(va_list ap);
+
+/* ft_printf | pf_convert_str.c */
+int		pf_convert_str(va_list ap);
+
+/* ft_printf | pf_convert_nbr.c */
+int		pf_convert_nbr(va_list ap, char specifier);
+int		pf_get_nbr_len(long int n);
+void	pf_putnbr(long int n);
+
+/* ft_printf | pf_convert_hex.c */
+int		pf_convert_hex(va_list ap, char specifier);
+int		pf_convert_ptr(va_list ap);
+int		pf_get_hex_len(unsigned long long n);
+void	pf_puthex(unsigned long long n, char specifier);
 
 #endif
