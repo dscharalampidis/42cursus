@@ -6,13 +6,13 @@
 #    By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 01:23:39 by dcharala          #+#    #+#              #
-#    Updated: 2022/12/13 03:48:48 by dcharala         ###   ########.fr        #
+#    Updated: 2022/12/16 23:50:44 by dcharala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # tool macros
 CXX := gcc
-#CXXFLAGS := -Wall -Wextra -Werror
+CXXFLAGS := -Wall -Wextra -Werror
 
 # path macros
 OBJ_PATH := obj

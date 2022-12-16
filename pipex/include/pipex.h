@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 03:14:03 by dcharala          #+#    #+#             */
-/*   Updated: 2022/12/14 17:07:15 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:49:36 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #  include <sys/wait.h>
 # elif __APPLE__
 #  include <string.h>
+#  include <errno.h>
 # endif
 
 /* errors.c */

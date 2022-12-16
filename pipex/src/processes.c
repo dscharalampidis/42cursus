@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 03:59:36 by dcharala          #+#    #+#             */
-/*   Updated: 2022/12/13 23:02:36 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/12/16 23:51:09 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ pid_t
 		pid = fork();
 		if (pid == -1)
 			error_process_retry(prog_name);
-		i++;
 		sleep(i);
+		i++;
 	}
 	return (pid);
 }
