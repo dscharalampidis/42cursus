@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 23:24:22 by dcharala          #+#    #+#             */
-/*   Updated: 2023/01/09 16:56:09 by dcharala         ###   ########.fr       */
+/*   Updated: 2023/01/09 21:53:32 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "../libft/include/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # define TSIZE 64
-# include <fcntl.h>
-# include <memory.h>
 
 typedef struct map
 {
