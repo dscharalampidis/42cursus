@@ -6,77 +6,68 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 03:53:06 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/15 19:16:20 by dcharala         ###   ########.fr       */
+/*   Updated: 2023/01/02 01:13:41 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char
-	*gnl_append_buf(int fd, char *buf, char *joinedbuf)
+size_t
+	gnl_strlen(const char *str)
 {
-	char	*tmp;
-	int		size;
+	int	i;
 
-	size = 1;
-	while (size)
-	{
-		size = read(fd, buf, BUFFER_SIZE);
-		if (size == -1)
-			return (NULL);
-		else if (size == 0)
-			break ;
-		buf[size] = '\0';
-		if (!joinedbuf)
-			joinedbuf = ft_strdup("");
-		tmp = joinedbuf;
-		joinedbuf = ft_strjoin(tmp, buf);
-		free(tmp);
-		tmp = NULL;
-		if (ft_strchr(buf, '\n'))
-			break ;
-	}
-	return (joinedbuf);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
 char
-	*gnl_separate_line_from_joinedbuf(char *line)
+	*gnl_strjoin(char **s1, char const *s2)
 {
-	size_t	i;
-	char	*joinedbuf;
+	char	*conc;
+	size_t	len;
 
-	i = -1;
-	while (line[++i] != '\n' && line[i])
-		;
-	if (!line[i])
+	if (s2 == NULL)
 		return (NULL);
-	joinedbuf = ft_substr(line, i + 1, ft_strlen(line) - i);
-	if (!*joinedbuf)
-	{
-		free(joinedbuf);
-		joinedbuf = NULL;
-	}
-	line[i + 1] = '\0';
-	return (joinedbuf);
+	if (!*s1)
+		return (ft_strdup(s2));
+	len = gnl_strlen((char *)*s1) + gnl_strlen((char *)s2) + 1;
+	conc = (char *)malloc(sizeof(char) * len);
+	if (!conc)
+		return (NULL);
+	ft_memcpy(conc, (char *)*s1, gnl_strlen((char *)*s1));
+	ft_memcpy(conc + gnl_strlen((char *)*s1), s2, gnl_strlen((char *)s2));
+	conc[len - 1] = '\0';
+	free(*s1);
+	return (conc);
 }
 
 char
 	*get_next_line(int fd)
 {
-	char		*line;
-	char		*buf;
-	static char	*joinedbuf;
+	char		*buff;
+	static char	*line;
+	int			sz;
 
-	if (fd == -1 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
+	buff = ft_calloc(2, 1);
+	sz = read(fd, buff, 1);
+	if (!sz)
+	{
+		free(buff);
 		return (NULL);
-	line = gnl_append_buf(fd, buf, joinedbuf);
-	free(buf);
-	buf = NULL;
-	if (!line)
-		return (NULL);
-	joinedbuf = gnl_separate_line_from_joinedbuf(line);
+	}
+	line = ft_strdup(buff);
+	while (sz > 0 && buff[0] != '\n')
+	{
+		sz = read(fd, buff, 1);
+		buff[1] = 0;
+		if (sz && buff[0] != '\n')
+			line = gnl_strjoin(&line, buff);
+	}
+	free(buff);
 	return (line);
 }

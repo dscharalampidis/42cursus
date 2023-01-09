@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 03:09:02 by dcharala          #+#    #+#             */
-/*   Updated: 2022/10/14 20:06:08 by dcharala         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:12:31 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = -1;
 	while (s[++i])
 		;
