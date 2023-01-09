@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:59:33 by dcharala          #+#    #+#             */
-/*   Updated: 2023/01/09 16:57:45 by dcharala         ###   ########.fr       */
+/*   Updated: 2023/01/09 22:22:56 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int
 	valid_map(t_map map_i)
 {
 	static t_req	ecpo = {0, 0, 0, 0, 0, 0};
-	size_t				i;
-	size_t				j;
+	size_t			i;
+	size_t			j;
 
 	i = -1;
 	while (map_i.tiles[++i])

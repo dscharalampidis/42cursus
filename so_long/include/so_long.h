@@ -6,7 +6,7 @@
 /*   By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 23:24:22 by dcharala          #+#    #+#             */
-/*   Updated: 2023/01/09 21:53:32 by dcharala         ###   ########.fr       */
+/*   Updated: 2023/01/09 22:22:26 by dcharala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ char	**dup_map(t_map *map);
 void	chk_path(t_map *map, t_req *pos);
 
 /* free.c */
-void		free_and_delete(char **arr, t_img *img);
-void		free_arr(char **arr);
-void		free_and_exit(t_map *to_free, char *str);
+void	free_and_delete(char **arr, t_img *img);
+void	free_arr(char **arr);
+void	free_and_exit(t_map *to_free, char *str);
 
 #endif

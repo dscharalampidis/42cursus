@@ -6,9 +6,12 @@
 #    By: dcharala <dcharala@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 01:23:39 by dcharala          #+#    #+#              #
-#    Updated: 2023/01/08 02:05:59 by dcharala         ###   ########.fr        #
+#    Updated: 2023/01/09 22:21:52 by dcharala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# install brew at 42
+# rm -rf $HOME/goinfre/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew && echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
 
 # tool macros
 CXX := gcc
